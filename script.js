@@ -23,7 +23,7 @@ startBtn.addEventListener("click", () => {
 function playMarksSound() {
   return new Promise((resolve) => {
     marks.play();
-    duration = Math.floor(Math.random() * 4000) + 15000;
+    duration = Math.floor(Math.random() * 4000) + 18000;
     setTimeout(resolve, duration);
     console.log(duration);
   });
@@ -33,7 +33,7 @@ function playMarksSound() {
 function playSetSound() {
   return new Promise((resolve) => {
     set.play();
-    duration = Math.floor(Math.random() * 500) + 800;
+    duration = Math.floor(Math.random() * 500) + 1000;
     setTimeout(resolve, duration);
     console.log(duration);
   });
