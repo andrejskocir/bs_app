@@ -5,42 +5,106 @@
 }
 
 body{
-    background: #333;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+    url('bg.jpg');
+    background-position: center;
+    background-size: cover;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    background-attachment: fixed;
 }
 
-button{
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    height: 30em;
+    width: max-content;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 2em;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
+}
+
+.startBtn{
     height: 5rem;
     width: 10rem;
     font-weight: 500;
     font-size: 2rem;
     letter-spacing: 2px;
-    border: 3px solid #fff;
+    border: 3px solid #CF0A0A;
     border-radius: 0.5rem;
-    color: #fff;
-    background: #81C6E8;
+    color: #CF0A0A;
+    background: #111;
     cursor: pointer;
     box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease 0s;
     margin: 3em;
 }
 
-button:hover{
-    border: 3px solid #81C6E8;
-    color: #81C6E8;
-    box-shadow: 0px 2px 5px #81C6E8;
-    background: #fff;
-}
 
 .hide{
-    visibility: hidden;
+    opacity: 0;
 }
 
 h1{
-    color: #fff;
+    color: #CF0A0A;
+    font-size: 2em;
+    width: 90%;
+    text-shadow: 0 0 5px #CF0A0A;
 }
+
+.progress{
+    color: #CF0A0A;
+    text-shadow: 0 0 10px #CF0A0A;
+}
+
+
+.startBtn {
+    position: relative;
+    color: #CF0A0A;
+    border: none;
+    z-index: 2;
+  }
+  .startBtn:before,
+  .startBtn:after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    border: 1px solid;
+    
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  .startBtn:before{
+     top: 0;
+     left: 0;
+     border-bottom-color: transparent;
+     border-right-color: transparent;
+     border-top-color: #CF0A0A;
+     border-left-color: #CF0A0A;
+  }
+  .startBtn:after{
+     bottom: 0;
+     right: 0;
+     border-top-color: transparent;
+     border-left-color: transparent;
+     border-bottom-color: #CF0A0A;
+     border-right-color: #CF0A0A;
+  }
+  .startBtn:hover:before,
+  .startBtn:hover:after {
+    border-color: #CF0A0A;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 5px #CF0A0A, 0 0 5px #CF0A0A inset;
+  }

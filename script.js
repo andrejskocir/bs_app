@@ -1,44 +1,73 @@
-const startBtn = document.querySelector(".startBtn")
+const startBtn = document.querySelector(".startBtn");
+const progress = document.querySelector(".progress");
 
-let marks = new Audio("marks.m4a")
-let set = new Audio("set.m4a")
-let gun = new Audio("gun.m4a")
+let marks = new Audio("marks.m4a");
+let set = new Audio("set.m4a");
+let gun = new Audio("gun.m4a");
 
-marks.volume = 1.0
-set.volume = 1.0
-gun.volume = 1.0
+marks.volume = 1.0;
+set.volume = 1.0;
+gun.volume = 1.0;
 
 marks.autoplay = true;
 set.autoplay = true;
 gun.autoplay = true;
 
+startBtn.addEventListener("click", () => {
+  startBtn.classList.toggle("hide");
+  progress.classList.remove("hide");
+  setTimeout(start, 1000);
+});
 
-startBtn.addEventListener("click",()=>{
-    startBtn.classList.toggle("hide")
-    setTimeout(start, 3000)
+// Function to play the 'marks' sound
+function playMarksSound() {
+  return new Promise((resolve) => {
+    marks.play();
+    duration = Math.floor(Math.random() * 4000) + 15000;
+    setTimeout(resolve, duration);
+    console.log(duration);
+  });
+}
 
-})
-œ
+// Function to play the 'set' sound
+function playSetSound() {
+  return new Promise((resolve) => {
+    set.play();
+    duration = Math.floor(Math.random() * 500) + 800;
+    setTimeout(resolve, duration);
+    console.log(duration);
+  });
+}
 
-function start(){
+// Function to play the 'gun' sound
+function playGunSound() {
+  return new Promise((resolve) => {
+    gun.play();
+    duration = 200;
+    setTimeout(resolve, duration);
+    console.log(duration);
+  });
+}
 
-    let markDelay = Math.floor(Math.random()*5000)
-    let setDelay = Math.floor((Math.random()*10000 + 3000) + markDelay)
-    let gunDelay = Math.floor((Math.random()*5000) + setDelay)
+async function start() {
+  try {
+    // Play sounds in the desired order
+    await playMarksSound();
+    console.log("Marks sound played");
+
+    await playSetSound();
+    console.log("Set sound played");
+
+    await playGunSound();
+    console.log("Gun sound played");
+
+    // Show the start button after gun sound + 1 second
     setTimeout(() => {
-        marks.play()
-        console.log(markDelay)
-      }, markDelay);
-      setTimeout(() => {
-        set.play()
-        console.log(setDelay)
-      }, setDelay);
-      setTimeout(() => {
-        gun.play()
-        console.log(gunDelay)
-      }, gunDelay);
-      setTimeout(() => {
-        startBtn.classList.remove("hide")
-      }, gunDelay+1000);
-
+      startBtn.classList.remove("hide");
+      progress.classList.toggle("hide");
+      console.log("Start button shown");
+    }, 1000);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
